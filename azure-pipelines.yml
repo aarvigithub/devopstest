@@ -22,7 +22,7 @@ stages:
     - bash: echo Before copying Contents in Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)    
     - task: CopyFiles@2
       inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: ls -al $(Build.ArtifactStagingDirectory)
