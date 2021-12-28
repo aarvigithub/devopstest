@@ -1,6 +1,6 @@
 
 trigger:
-- main
+- main123
 
 pool: ravinewpool
 
@@ -20,3 +20,8 @@ stages:
           $(Build.BuildId)
     - bash: echo Contents in System Default Working Directory; ls -R $(System.DefaultWorkingDirectory)
     - bash: echo Before copying Contents in Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)    
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
