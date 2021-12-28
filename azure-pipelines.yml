@@ -34,18 +34,3 @@ stages:
         publishLocation: 'Container'
     - bash: echo $(Pipeline.Workspace)
     - bash: ls -al $(Pipeline.Workspace)
-
-- stage: Deploy
-  displayName: Deploy the docker image
-  jobs:
-  - job: Deploy
-    steps:
-    - task: KubernetesManifest@0
-      inputs:
-        action: 'createSecret'
-        kubernetesServiceConnection: 'devopstoaksconnection'
-        namespace: 'default'
-        secretType: 'dockerRegistry'
-        secretName: 'deploytoaksfromacr'
-        dockerRegistryEndpoint: 'aarviaahanaacrdevopsconnection'
-    
